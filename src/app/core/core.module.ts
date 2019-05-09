@@ -5,9 +5,14 @@
 
 import {NgModule, SkipSelf, Optional} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {HttpClientModule} from '@angular/common/http';
+import {MatIconRegistry} from '@angular/material';
+import {DomSanitizer} from '@angular/platform-browser';
+import {MatToolbarModule, MatIconModule, MatButtonModule} from '@angular/material';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {SidebarComponent} from './sidebar/sidebar.component';
+import {loadSvgResources} from '../utils/svg.util';
 
 @NgModule({
     declarations: [
@@ -21,14 +26,29 @@ import {SidebarComponent} from './sidebar/sidebar.component';
         SidebarComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        HttpClientModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule
     ]
 })
+
 export class CoreModule {
-    // Optional可选 SkipSelf跳过自身，避免无限循环
-    constructor(@Optional() @SkipSelf() parent: CoreModule) {
+    /*************************************************
+     *  Optional可选 SkipSelf跳过自身，避免无限循环
+     *  loadSvgResources工具类导入一次，一劳永逸
+     *
+     **************************************************/
+
+    constructor(
+        @Optional() @SkipSelf() parent: CoreModule,
+        ir: MatIconRegistry,
+        ds: DomSanitizer
+    ) {
         if (parent) {
             throw new Error('模块已经存在,不能再次加载！');
         }
+        loadSvgResources(ir, ds);
     }
 }
