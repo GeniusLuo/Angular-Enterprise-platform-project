@@ -1,3 +1,24 @@
-<p>
-  sidebar works!
-</p>
+<mat-nav-list role="list">
+  <h3 mat-subheader>项目</h3>
+  <mat-list-item>
+    <mat-icon mat-list-icon svgIcon="projects"></mat-icon>
+    <span matLine>项目首页</span>
+    <span matLine mat-subheader>查看您的所有项目</span>
+  </mat-list-item>
+  <h3 mat-subheader>日历</h3>
+  <mat-list-item>
+    <mat-icon mat-list-icon svgIcon="month"></mat-icon>
+    <span matLine>月视图</span>
+    <span matLine mat-subheader>按月查看您的任务</span>
+  </mat-list-item>
+  <mat-list-item>
+    <mat-icon mat-list-icon svgIcon="week"></mat-icon>
+    <span matLine>周视图</span>
+    <span matLine mat-subheader>按周查看您的任务</span>
+  </mat-list-item>
+  <mat-list-item>
+    <mat-icon mat-list-icon [svgIcon]="today"></mat-icon>
+    <span matLine>日视图</span>
+    <span matLine mat-subheader>按天查看您的任务</span>
+  </mat-list-item>
+</mat-nav-list>
