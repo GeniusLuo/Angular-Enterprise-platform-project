@@ -7,6 +7,7 @@ import {MatIconRegistry} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
 
 export const loadSvgResources = (ir: MatIconRegistry, ds: DomSanitizer) => {
+    ir.addSvgIconSetInNamespace('avatars', ds.bypassSecurityTrustResourceUrl('assets/img/avatar/avatars.svg'));
     ir.addSvgIcon('draw', ds.bypassSecurityTrustResourceUrl('assets/svg/draw.svg'));
     ir.addSvgIcon('day', ds.bypassSecurityTrustResourceUrl('assets/img/sidebar/day.svg'));
     ir.addSvgIcon('month', ds.bypassSecurityTrustResourceUrl('assets/img/sidebar/month.svg'));
